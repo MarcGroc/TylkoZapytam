@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import SearchBar from "./components/SearchBar";
+import Navigation from "./components/Navbar";
+import SearchButton from "./components/SearchButton";
+import ExpertTile from "./components/ExpertTile";
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          1234
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <React.StrictMode>
+        <div>
+            <header>
+                <Navigation />
+            </header>
+            <div >
+                <SearchBar   />
+                <SearchButton   />
+            </div>
+            <div>
+                <ExpertTile />
+            </div>
+
+        </div>
+      </React.StrictMode>
   );
 }
 
