@@ -96,7 +96,7 @@ The application will be available on the web and mobile devices.
 
 ### 2.2 Product functions
 
-
+- Users can ask questions, book calls and rate experts.
 ### 2.3 User characteristics
 
 - Users of the platform are professionals or individuals seeking expert advice or assistance on a short-notice basis.
