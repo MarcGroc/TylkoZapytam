@@ -44,8 +44,8 @@ jobs:
 
 
     - name: run tests
-#      run: poetry run pytest . --cov=app
-      run: python backend/manage.py test
+      run: poetry run pytest . --cov=app
+#      run: python backend/manage.py test
       working-directory: ./backend
 
     - name: ensure test coverage

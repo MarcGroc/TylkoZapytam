@@ -24,3 +24,6 @@ docker-compose:
 run-local:
 	python backend/manage.py runserver
 	cd frontend && npm start
+
+tests:
+	python backend/manage.py test
