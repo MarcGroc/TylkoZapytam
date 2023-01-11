@@ -1,0 +1,57 @@
+name: backend-test
+
+on:
+  push:
+    branches: [ "master", "develop" ]
+  pull_request:
+    branches: [ "master", "develop" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+
+    # Cache to prevent installing dependencies every time
+    - name: cache poetry install
+      uses: actions/cache@v3
+      with:
+        path: ~/.local
+        key: poetry-1.2.1
+
+    # testing not sure if this is needed or will work
+    - uses: snok/install-poetry@v1
+      with:
+        version: 1.2.1
+        virtualenvs-create: true
+        virtualenvs-in-project: true
+
+    - name: cache deps
+      id: cache-deps
+      uses: actions/cache@v3
+      with:
+        path: ./backend/.venv
+        key: backend-pydeps-${{ hashFiles('.backend/poetry.lock') }}
+
+    - run: poetry install --no-interaction --no-root
+      working-directory: ./backend
+      if: steps.cache-deps.outputs.cache-hit != 'true' || github.event.inputs.useCache == 'no'
+
+
+    - name: run tests
+      run: poetry run pytest . --cov=app
+      working-directory: ./backend
+
+    - name: ensure test coverage
+      run: poetry run coverage report --fail-under=76
+      working-directory: ./backend
+
+    # not sure where to put linter here or in a different workflow
+    - name: lint code
+      run: poetry run black . --check
+      working-directory: ./backend
