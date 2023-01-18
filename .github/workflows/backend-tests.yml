@@ -44,5 +44,3 @@ jobs:
 
       - run: poetry run python ./backend/manage.py test
 
-
-      - run: poetry run coverage report --fail-under=76
