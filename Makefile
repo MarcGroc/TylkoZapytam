@@ -1,10 +1,30 @@
 default: format
 
 format:
+	echo "Formatting app directory"
 	black backend
 	isort backend --profile black
 	black deployment
 	isort deployment --profile black
+	echo "Formatted successfully"
+
+lint:
+	echo "Linting app directory"
+	flake8 backend/
+	echo "Linted successfully"
+
+run-backend:
+	python backend/manage.py runserver
+
+run-frontend:
+	cd frontend && npm start
+
+run-local:
+	make -j run-backend run-frontend
+
+# TODO: change to python backend/manage.py test app if tests directory will be created
+tests:
+	python backend/manage.py test
 
 # below are not implemented yet
 build-backend:
@@ -18,12 +38,6 @@ build-task-runner:
 
 
 docker-compose:
-	docker compose -f docker-compose.development.yml rm -s -v -f
-	docker compose -f docker-compose.development.yml up --build
+	docker-compose -f docker-compose.development.yml rm -s -v -f
+	docker-compose -f docker-compose.development.yml up --build
 
-run-local:
-	python backend/manage.py runserver
-	cd frontend && npm start
-
-tests:
-	python backend/manage.py test
