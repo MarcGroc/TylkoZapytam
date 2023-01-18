@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
+import sys
 from pathlib import Path
 
 from dotenv import load_dotenv, find_dotenv
@@ -40,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+
+    'app'
 ]
 
 MIDDLEWARE = [
@@ -76,20 +79,24 @@ WSGI_APPLICATION = 'TylkoZapytam.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_DB'),
-        'USER': os.environ.get('POSTGRES_USER'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-        'HOST': os.environ.get('POSTGRES_SERVER'),
-        'PORT': os.environ.get('POSTGRES_PORT'),
-        'TEST': {
+if 'test' in sys.argv:
+    DATABASES = {
+        'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': ':memory:',
-        },
+            'NAME': 'sqlite3testdb'
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ.get('POSTGRES_DB'),
+            'USER': os.environ.get('POSTGRES_USER'),
+            'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+            'HOST': os.environ.get('POSTGRES_SERVER'),
+            'PORT': os.environ.get('POSTGRES_PORT'),
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
