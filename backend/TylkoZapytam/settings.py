@@ -79,7 +79,7 @@ WSGI_APPLICATION = "TylkoZapytam.wsgi.application"
 
 if "test" in sys.argv:
     DATABASES = {
-        "default": {
+        "test": {
             "ENGINE": "django.db.backends.postgresql",
             "NAME": os.environ.get("POSTGRES_DB"),
             "USER": os.environ.get("POSTGRES_USER"),
