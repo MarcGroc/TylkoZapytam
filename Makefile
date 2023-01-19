@@ -14,19 +14,30 @@ lint:
 	echo "Linted successfully"
 
 run-backend:
+	echo "Running backend"
 	python backend/manage.py runserver
 
 run-frontend:
+	echo "Running frontend"
 	cd frontend && npm start
 
 run-local:
 	make -j run-backend run-frontend
 
-# TODO: change to python backend/manage.py test app if tests directory will be created
 tests:
-	python backend/manage.py test
+	echo "Running tests for backend"
+	python backend/manage.py test app
+	python backend/manage.py test users
 
-# below are not implemented yet
+migrations:
+	echo "Making migrations"
+	python backend/manage.py makemigrations
+	echo "Making migrate"
+	python backend/manage.py migrate
+
+checkmigrations:
+	python backend/manage.py makemigrations --check --no-input --dry-run
+# Docker commands
 build-backend:
 	docker build . -f backend/Dockerfile -t backend
 
