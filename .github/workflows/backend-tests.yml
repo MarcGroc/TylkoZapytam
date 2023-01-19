@@ -8,8 +8,6 @@ on:
 
 jobs:
   test:
-    container: 
-      image: python:3.9
     runs-on: ubuntu-latest
     services:
       postgres:
