@@ -2,7 +2,7 @@ import os
 import sys
 from pathlib import Path
 
-from dotenv import load_dotenv, find_dotenv
+from dotenv import find_dotenv, load_dotenv
 
 load_dotenv(find_dotenv(".env.development"))
 
@@ -24,6 +24,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "app.apps.ApConfig",
+    "users.apps.UsersConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -33,8 +34,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "drf_spectacular",
     "django_loguru",
-    # 'app',
-    "users",
+    # "app",
+    # "users",
 ]
 
 MIDDLEWARE = [
@@ -89,15 +90,15 @@ WSGI_APPLICATION = "TylkoZapytam.wsgi.application"
 #         }
 #     }
 # else:
-if os.environ.get('GITHUB_WORKFLOW'):
+if os.environ.get("GITHUB_WORKFLOW"):
     DATABASES = {
-        'default': {
-           'ENGINE': 'django.db.backends.postgresql',
-           'NAME': 'pytania',
-           'USER': 'postgres',
-           'PASSWORD': 'postgres',
-           'HOST': '127.0.0.1',
-           'PORT': '5432',
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": "pytania",
+            "USER": "postgres",
+            "PASSWORD": "postgres",
+            "HOST": "127.0.0.1",
+            "PORT": "5432",
         }
     }
 
@@ -111,14 +112,15 @@ else:
             "HOST": os.environ.get("POSTGRES_SERVER"),
             "PORT": os.environ.get("POSTGRES_PORT"),
         },
-        "test": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": os.environ.get("POSTGRES_DB"),
-            "USER": os.environ.get("POSTGRES_USER"),
-            "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
-            "HOST": os.environ.get("POSTGRES_SERVER"),
-            "PORT": os.environ.get("POSTGRES_PORT"),
-        }
+        # TODO: do usunięcia
+        # "test": {
+        #     "ENGINE": "django.db.backends.postgresql",
+        #     "NAME": os.environ.get("POSTGRES_DB"),
+        #     "USER": os.environ.get("POSTGRES_USER"),
+        #     "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
+        #     "HOST": os.environ.get("POSTGRES_SERVER"),
+        #     "PORT": os.environ.get("POSTGRES_PORT"),
+        # },
     }
 
 # Password validation

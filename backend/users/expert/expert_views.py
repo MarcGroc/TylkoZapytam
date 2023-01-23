@@ -3,9 +3,9 @@ from django.views.generic import DetailView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from ..serializers import UserSerializer
 from .expert_models import Expert
 from .expert_serializers import ExpertSerializer
-from ..serializers import UserSerializer
 
 
 class ExpertAPIView(APIView):

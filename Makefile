@@ -26,6 +26,7 @@ run-local:
 
 tests:
 	echo "Running tests for backend"
+	python backend/manage.py test app
 	python backend/manage.py test users
 
 migrations:

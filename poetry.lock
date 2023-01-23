@@ -232,6 +232,20 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "isort"
+version = "5.11.4"
+description = "A Python utility / library to sort Python imports."
+category = "main"
+optional = false
+python-versions = ">=3.7.0"
+
+[package.extras]
+colors = ["colorama (>=0.4.3,<0.5.0)"]
+pipfile-deprecated-finder = ["pipreqs", "requirementslib"]
+plugins = ["setuptools"]
+requirements-deprecated-finder = ["pip-api", "pipreqs"]
+
+[[package]]
 name = "jsonschema"
 version = "4.17.3"
 description = "An implementation of JSON Schema validation for Python"
@@ -538,7 +552,7 @@ dev = ["black (>=19.3b0)", "pytest (>=4.6.2)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "68ba8b2438e52ee74eac5de9f14cc06066b8f75d3c7aff4f4cad0529443290b4"
+content-hash = "2df8c4bb44e6e361945104a988d6b440269b17f65e3bc9790b42983146f9f78e"
 
 [metadata.files]
 asgiref = [
@@ -625,6 +639,10 @@ inflection = [
 iniconfig = [
     {file = "iniconfig-2.0.0-py3-none-any.whl", hash = "sha256:b6a85871a79d2e3b22d2d1b94ac2824226a63c6b741c88f7ae975f18b6778374"},
     {file = "iniconfig-2.0.0.tar.gz", hash = "sha256:2d91e135bf72d31a410b17c16da610a82cb55f6b0477d1a902134b24a455b8b3"},
+]
+isort = [
+    {file = "isort-5.11.4-py3-none-any.whl", hash = "sha256:c033fd0edb91000a7f09527fe5c75321878f98322a77ddcc81adbd83724afb7b"},
+    {file = "isort-5.11.4.tar.gz", hash = "sha256:6db30c5ded9815d813932c04c2f85a360bcdd35fed496f4d8f35495ef0a261b6"},
 ]
 jsonschema = [
     {file = "jsonschema-4.17.3-py3-none-any.whl", hash = "sha256:a870ad254da1a8ca84b6a2905cac29d265f805acc57af304784962a2aa6508f6"},
