@@ -6,7 +6,7 @@ from loguru import logger
 from .question_models import Question
 
 
-class ClientTest(TestCase):
+class QuestionTest(TestCase):
     logger.info(" Running test for app.question Model")
 
     @classmethod
