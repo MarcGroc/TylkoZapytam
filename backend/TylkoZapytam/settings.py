@@ -34,8 +34,6 @@ INSTALLED_APPS = [
     "rest_framework",
     "drf_spectacular",
     "django_loguru",
-    # "app",
-    # "users",
 ]
 
 MIDDLEWARE = [
@@ -78,18 +76,6 @@ WSGI_APPLICATION = "TylkoZapytam.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# if "test" in sys.argv:
-#     DATABASES = {
-#         "test": {
-#             "ENGINE": "django.db.backends.postgresql",
-#             "NAME": os.environ.get("POSTGRES_DB"),
-#             "USER": os.environ.get("POSTGRES_USER"),
-#             "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
-#             "HOST": os.environ.get("POSTGRES_SERVER"),
-#             "PORT": os.environ.get("POSTGRES_PORT"),
-#         }
-#     }
-# else:
 if os.environ.get("GITHUB_WORKFLOW"):
     DATABASES = {
         "default": {
@@ -112,15 +98,6 @@ else:
             "HOST": os.environ.get("POSTGRES_SERVER"),
             "PORT": os.environ.get("POSTGRES_PORT"),
         },
-        # TODO: do usunięcia
-        # "test": {
-        #     "ENGINE": "django.db.backends.postgresql",
-        #     "NAME": os.environ.get("POSTGRES_DB"),
-        #     "USER": os.environ.get("POSTGRES_USER"),
-        #     "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
-        #     "HOST": os.environ.get("POSTGRES_SERVER"),
-        #     "PORT": os.environ.get("POSTGRES_PORT"),
-        # },
     }
 
 # Password validation

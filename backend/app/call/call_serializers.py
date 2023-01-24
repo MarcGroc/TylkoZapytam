@@ -4,7 +4,8 @@ from .call_models import Call
 
 
 class CallSerializer(serializers.ModelSerializer):
+    created = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", read_only=True)
+
     class Meta:
         model = Call
-        # TODO: fields are only for testing purposes
-        fields = ["id", "call_date", "call_duration", "call_type", "call_status"]
+        fields = ["call_date", "call_duration", "call_type", "call_status", "created"]

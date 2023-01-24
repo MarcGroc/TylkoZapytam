@@ -1,17 +1,20 @@
 from rest_framework import serializers
 
-from .category_models import Category, Tag
+from .category_models import Category
 
 
-class TagSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Tag
-        fields = ["id", "name"]
+# class TagSerializer(serializers.ModelSerializer):
+#     created = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", read_only=True)
+#
+#     class Meta:
+#         model = Tag
+#         fields = ["name", "created"]
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    tags = TagSerializer(many=True)
+    # tags = TagSerializer(many=True)
+    created = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", read_only=True)
 
     class Meta:
         model = Category
-        fields = ["id", "name", "tags"]
+        fields = ["name", "tags", "created"]

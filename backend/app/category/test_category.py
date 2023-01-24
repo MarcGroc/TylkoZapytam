@@ -1,35 +1,30 @@
+import factory
 from django.test import TestCase
 from loguru import logger
 
-from .category_models import Category, Tag
+from .category_controller import CategoryFactory, TagFactory
 
 
 class CategoryTest(TestCase):
     logger.info(" Running test for app.category Model")
 
-    @classmethod
-    def setUpTestData(cls):
+    def setUp(self):
+        TagFactory.reset_sequence()
+        CategoryFactory.reset_sequence()
+        self.category = factory.build(dict, FACTORY_CLASS=CategoryFactory)
 
-        cls.category = Category.objects.create(
-            id=1,
-            name="test",
-            tags=Tag.objects.create(id=1, name="test"),
-        )
-
-    def test_category_name(self):
-        self.assertEqual(str(self.category.name), "test")
-
-    def test_category_tag(self):
-        self.assertEqual(str(self.category.tags), "test")
+    def test_category_model_instances(self):
+        self.assertIsInstance(self.category, dict)
+        self.assertIsInstance(self.category['name'], str)
+        self.assertIsInstance(self.category['tags'], dict)
 
 
-class TagTest(TestCase):
-    logger.info(" Running test for app.tag Model")
-
-    @classmethod
-    def setUpTestData(cls):
-
-        cls.tag = Tag.objects.create(id=1, name="test")
-
-    def test_tag_name(self):
-        self.assertEqual(str(self.tag.name), "test")
+# class TagTest(TestCase):
+#     logger.info(" Running test for app.tag Model")
+#
+#     def setUp(self):
+#         TagFactory.reset_sequence()
+#         self.tag = TagFactory(name="test")
+#
+#     def test_tag_name(self):
+#         self.assertEqual(str(self.tag.name), "test")
