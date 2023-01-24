@@ -25,6 +25,9 @@ class CallTest(TestCase):
         self.assertGreaterEqual(self.call['call_duration'], 10)
         self.assertLessEqual(self.call['call_duration'], 30)
 
+    def test_call_date_should_be_less_than_now(self):
+        self.assertLess(self.call['call_date'], datetime.now())
+
     def test_call_type_in_choices(self):
         self.assertIn(self.call['call_type'], ['Incoming', 'Outgoing'])
 

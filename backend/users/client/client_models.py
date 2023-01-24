@@ -12,7 +12,7 @@ class Client(models.Model):
     )
     ip_city = models.CharField(max_length=100, null=True, blank=True)
     country_code = models.CharField(max_length=2, null=True, blank=True)
-    device_type = models.CharField(max_length=20, null=True, blank=True)
+    device_type = models.CharField(max_length=50, null=True, blank=True)
     last_password_change = models.DateTimeField(auto_now=True)
     phone_number = models.CharField(max_length=20, null=True, blank=True)
     questions_asked = models.IntegerField(default=0)
