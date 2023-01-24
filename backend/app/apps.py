@@ -1,5 +1,5 @@
 from django.apps import AppConfig
-from django.db import connection, OperationalError
+from django.db import OperationalError, connection
 from loguru import logger
 
 
@@ -9,6 +9,7 @@ class ApConfig(AppConfig):
 
     def ready(self):
         import app.signals
+
         logger.info("Ensure database connection")
         try:
             connection.ensure_connection()

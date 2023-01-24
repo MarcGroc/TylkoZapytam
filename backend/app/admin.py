@@ -1,9 +1,10 @@
 from django.contrib import admin
 
 from .call.call_models import Call
-from .category.category_models import Category, Tag
+from .category.category_models import Category
 from .question.question_models import Question
 from .rating.rating_models import Rating
+from .tag.tag_models import Tag
 
 
 @admin.register(Question)

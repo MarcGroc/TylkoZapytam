@@ -1,8 +1,7 @@
-import factory
 from datetime import datetime
 
+import factory
 from django.test import TestCase
-
 from loguru import logger
 
 from .tag_controller import TagFactory
@@ -17,12 +16,12 @@ class TagTest(TestCase):
 
     def test_tag_model_instances(self):
         self.assertIsInstance(self.tag, dict)
-        self.assertIsInstance(self.tag['name'], str)
-        self.assertIsInstance(self.tag['created'], datetime)
+        self.assertIsInstance(self.tag["name"], str)
+        self.assertIsInstance(self.tag["created"], datetime)
 
     def test_tag_name_length_should_be_in_range_3_to_30(self):
-        self.assertGreaterEqual(len(self.tag['name']), 3)
-        self.assertLessEqual(len(self.tag['name']), 30)
+        self.assertGreaterEqual(len(self.tag["name"]), 3)
+        self.assertLessEqual(len(self.tag["name"]), 30)
 
     def test_tag_created_date_should_be_less_than_now(self):
-        self.assertLess(self.tag['created'], datetime.now())
+        self.assertLess(self.tag["created"], datetime.now())

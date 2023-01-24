@@ -16,20 +16,20 @@ class CallTest(TestCase):
 
     def test_call_model_instances(self):
         self.assertIsInstance(self.call, dict)
-        self.assertIsInstance(self.call['call_date'], datetime)
-        self.assertIsInstance(self.call['call_duration'], int)
-        self.assertIsInstance(self.call['call_type'], str)
-        self.assertIsInstance(self.call['call_status'], str)
+        self.assertIsInstance(self.call["call_date"], datetime)
+        self.assertIsInstance(self.call["call_duration"], int)
+        self.assertIsInstance(self.call["call_type"], str)
+        self.assertIsInstance(self.call["call_status"], str)
 
     def test_call_duration_range_should_be_in_range_10_to_30(self):
-        self.assertGreaterEqual(self.call['call_duration'], 10)
-        self.assertLessEqual(self.call['call_duration'], 30)
+        self.assertGreaterEqual(self.call["call_duration"], 10)
+        self.assertLessEqual(self.call["call_duration"], 30)
 
     def test_call_date_should_be_less_than_now(self):
-        self.assertLess(self.call['call_date'], datetime.now())
+        self.assertLess(self.call["call_date"], datetime.now())
 
     def test_call_type_in_choices(self):
-        self.assertIn(self.call['call_type'], ['Incoming', 'Outgoing'])
+        self.assertIn(self.call["call_type"], ["Incoming", "Outgoing"])
 
     def test_call_status_in_choices(self):
-        self.assertIn(self.call['call_status'], ['Scheduled', 'Answered', 'Missed'])
+        self.assertIn(self.call["call_status"], ["Scheduled", "Answered", "Missed"])

@@ -1,3 +1,4 @@
+# from app.rating.rating_models import Rating
 from django.contrib.auth.models import User
 from django.contrib.postgres.fields import ArrayField
 from django.db import models
@@ -26,8 +27,8 @@ class Expert(models.Model):
     calls_scheduled = models.IntegerField(default=0)
     calls_completed = models.IntegerField(default=0)
     category_choices = ArrayField(models.CharField(max_length=100), default=list)
-    # is_verified = models.BooleanField(default=False)
-    # ratings = models.ManyToManyField(Rating, blank=True, related_name="expert")
+    expert_is_verified = models.BooleanField(default=False)
+    # ratings = models.ForeignKey(Rating, on_delete=models.CASCADE, null=True, blank=True)
     # total_rating = models.IntegerField(default=0)
 
     class Meta:

@@ -1,6 +1,6 @@
-import factory
-
 from datetime import datetime
+
+import factory
 
 from .tag_models import Tag
 
