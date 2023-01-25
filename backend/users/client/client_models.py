@@ -1,11 +1,10 @@
-from django.contrib.auth.models import User
 from django.db import models
 
 
 class Client(models.Model):
     app_label = "users"
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    # user = models.OneToOneField(User, on_delete=models.CASCADE)
     ip_address = models.GenericIPAddressField(
         protocol="both", unpack_ipv4=True, blank=True, null=True
     )
@@ -20,6 +19,3 @@ class Client(models.Model):
 
     class Meta:
         ordering = ["questions_asked", "calls_scheduled"]
-
-    def __str__(self):
-        return self.user.username

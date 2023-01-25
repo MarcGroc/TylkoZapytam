@@ -97,14 +97,6 @@ else:
             "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
             "HOST": os.environ.get("POSTGRES_SERVER"),
             "PORT": os.environ.get("POSTGRES_PORT"),
-            "TEST": {
-                "ENGINE": "django.db.backends.postgresql",
-                "NAME": os.environ.get("POSTGRES_DB"),
-                "USER": os.environ.get("POSTGRES_USER"),
-                "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
-                "HOST": os.environ.get("POSTGRES_SERVER"),
-                "PORT": os.environ.get("POSTGRES_PORT"),
-            },
         }
     }
 
@@ -131,7 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "pl-pl"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "CET"
 
 USE_I18N = True
 

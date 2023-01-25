@@ -3,7 +3,6 @@ from datetime import datetime
 from django.db import models
 
 
-
 class Question(models.Model):
     app_label = "app"
 
