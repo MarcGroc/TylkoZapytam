@@ -11,9 +11,6 @@ class ClientFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Client
 
-    user = factory.Sequence(
-        lambda n: User.objects.create_user(username="test", password="test")
-    )
     ip_address = factory.LazyFunction(fake.ipv4)
     ip_city = factory.LazyFunction(fake.city)
     country_code = factory.LazyFunction(fake.country_code)

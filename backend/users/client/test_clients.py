@@ -17,7 +17,6 @@ class ClientTest(TestCase):
 
     def test_client_model_instances(self):
         self.assertIsInstance(self.client, dict)
-        self.assertIsInstance(self.client["user"], User)
         self.assertIsInstance(self.client["ip_address"], str)
         self.assertIsInstance(self.client["ip_city"], str)
         self.assertIsInstance(self.client["country_code"], str)

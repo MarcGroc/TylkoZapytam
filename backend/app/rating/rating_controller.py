@@ -13,4 +13,3 @@ class RatingFactory(factory.django.DjangoModelFactory):
     rating = randint(1, 5)
     comment = factory.Faker("text", max_nb_chars=1000)
     rating_date = datetime.now()
-    user_id = factory.SubFactory("users.client.client_models.ClientFactory")

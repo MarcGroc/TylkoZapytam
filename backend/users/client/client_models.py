@@ -4,7 +4,6 @@ from django.db import models
 class Client(models.Model):
     app_label = "users"
 
-    # user = models.OneToOneField(User, on_delete=models.CASCADE)
     ip_address = models.GenericIPAddressField(
         protocol="both", unpack_ipv4=True, blank=True, null=True
     )

@@ -15,4 +15,3 @@ class QuestionFactory(factory.django.DjangoModelFactory):
     answer = factory.LazyFunction(fake.text)
     question_date = factory.LazyFunction(fake.date_time_this_month)
     answer_date = factory.LazyFunction(fake.date_time_this_month)
-    client_id = factory.SubFactory("users.client.client_models.ClientFactory")

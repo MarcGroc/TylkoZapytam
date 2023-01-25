@@ -19,7 +19,6 @@ class RatingTest(TestCase):
         self.assertIsInstance(self.rating["rating"], int)
         self.assertIsInstance(self.rating["comment"], str)
         self.assertIsInstance(self.rating["rating_date"], datetime)
-        self.assertIsInstance(self.rating["user_id"], dict)
 
     def test_rating_rating_should_be_in_range_1_to_5(self):
         self.assertGreaterEqual(self.rating["rating"], 1)

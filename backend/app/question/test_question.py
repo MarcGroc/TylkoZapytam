@@ -20,7 +20,6 @@ class QuestionTest(TestCase):
         self.assertIsInstance(self.question["answer"], str)
         self.assertIsInstance(self.question["question_date"], datetime)
         self.assertIsInstance(self.question["answer_date"], datetime)
-        self.assertIsInstance(self.question["client_id"], int)
 
     def test_question_question_date_should_be_less_than_now(self):
         self.assertLess(self.question["question_date"], datetime.now())
