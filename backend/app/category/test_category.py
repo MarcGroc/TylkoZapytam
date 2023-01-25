@@ -15,3 +15,4 @@ class CategoryTest(TestCase):
     def test_category_instances(self):
         self.assertIsInstance(self.category, dict)
         self.assertIsInstance(self.category["name"], str)
+        self.assertIsInstance(self.category["tags"], str)
