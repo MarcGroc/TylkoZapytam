@@ -25,15 +25,20 @@ run-local:
 	make -j run-backend run-frontend
 
 tests:
-	echo "Running tests for backend"
+	echo "Running tests for backend app"
 	python backend/manage.py test app
+	echo "Running tests for backend users"
 	python backend/manage.py test users
 
 migrations:
-	echo "Making migrations"
-	python backend/manage.py makemigrations
-	echo "Making migrate"
-	python backend/manage.py migrate
+	echo "Making app migrations"
+	python backend/manage.py makemigrations app
+	echo "Making app migrate"
+	python backend/manage.py migrate app
+	echo "Making users migrations"
+	python backend/manage.py makemigrations users
+	echo "Making users migrate"
+	python backend/manage.py migrate users
 
 checkmigrations:
 	python backend/manage.py makemigrations --check --no-input --dry-run

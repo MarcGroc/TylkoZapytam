@@ -4,7 +4,8 @@ from .question_models import Question
 
 
 class ClientSerializer(serializers.ModelSerializer):
+    created_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", read_only=True)
+
     class Meta:
         model = Question
-        # TODO: fields are only for testing purposes
-        fields = ["id", "client", "expert", "question_date"]
+        fields = ["id", "question_text" "created_at"]

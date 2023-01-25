@@ -1,33 +1,31 @@
-from django.contrib.auth.models import User
+from datetime import datetime
+
+import factory
 from django.test import TestCase
 from loguru import logger
 
-from .client_models import Client
+from .client_controller import ClientFactory
 
 
 class ClientTest(TestCase):
     logger.info(" Running test for users.client Model")
 
-    @classmethod
-    def setUpTestData(cls):
-        cls.user = User.objects.create_user(username="test", password="test")
-        cls.client = Client.objects.create(
-            user=cls.user,
-            ip_address="0.0.0.0",
-            ip_city=None,
-            country_code="TC",
-            device_type="Test Device",
-            phone_number="1234567890",
-            questions_asked=0,
-            calls_scheduled=0,
-            calls_completed=0,
-        )
+    def setUp(self):
+        ClientFactory.reset_sequence()
+        self.client = factory.build(dict, FACTORY_CLASS=ClientFactory)
 
-    def test_user_username(self):
-        self.assertEqual(str(self.user.username), "test")
+    def test_client_model_instances(self):
+        self.assertIsInstance(self.client, dict)
+        self.assertIsInstance(self.client["ip_address"], str)
+        self.assertIsInstance(self.client["ip_city"], str)
+        self.assertIsInstance(self.client["country_code"], str)
+        self.assertIsInstance(self.client["device_type"], str)
+        self.assertIsInstance(self.client["last_password_change"], datetime or None)
+        self.assertIsInstance(self.client["phone_number"], str)
+        self.assertIsInstance(self.client["questions_asked"], int)
+        self.assertIsInstance(self.client["calls_scheduled"], int)
+        self.assertIsInstance(self.client["calls_completed"], int)
 
-    def test_client_ip_address(self):
-        self.assertEqual(str(self.user.client.ip_address), "0.0.0.0")
-
-    def test_client_device_type(self):
-        self.assertEqual(str(self.user.client.device_type), "Test Device")
+    def test_client_ip_address_should_be_valid(self):
+        self.assertTrue(self.client["ip_address"].count(".") == 3)
+        self.assertTrue(self.client["ip_address"].count(":") == 0)

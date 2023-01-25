@@ -1,27 +1,35 @@
 from datetime import datetime
 
+import factory
 from django.test import TestCase
 from loguru import logger
 
-from .call_models import Call
+from .call_controller import CallFactory
 
 
 class CallTest(TestCase):
     logger.info(" Running test for app.call Model")
 
-    @classmethod
-    def setUpTestData(cls):
+    def setUp(self):
+        CallFactory.reset_sequence()
+        self.call = factory.build(dict, FACTORY_CLASS=CallFactory)
 
-        cls.call = Call.objects.create(
-            id=1,
-            call_date=datetime.now(),
-            call_duration=1,
-            call_type="test",
-            call_status="test",
-        )
+    def test_call_model_instances(self):
+        self.assertIsInstance(self.call, dict)
+        self.assertIsInstance(self.call["call_date"], datetime)
+        self.assertIsInstance(self.call["call_duration"], int)
+        self.assertIsInstance(self.call["call_type"], str)
+        self.assertIsInstance(self.call["call_status"], str)
 
-    def test_call_type(self):
-        self.assertEqual(str(self.call.call_type), "test")
+    def test_call_duration_range_should_be_in_range_10_to_30(self):
+        self.assertGreaterEqual(self.call["call_duration"], 10)
+        self.assertLessEqual(self.call["call_duration"], 30)
 
-    def test_call_status(self):
-        self.assertEqual(str(self.call.call_status), "test")
+    def test_call_date_should_be_less_than_now(self):
+        self.assertLess(self.call["call_date"], datetime.now())
+
+    def test_call_type_in_choices(self):
+        self.assertIn(self.call["call_type"], ["Incoming", "Outgoing"])
+
+    def test_call_status_in_choices(self):
+        self.assertIn(self.call["call_status"], ["Scheduled", "Answered", "Missed"])

@@ -1,50 +1,39 @@
+from datetime import datetime
+
+import factory
 from django.contrib.auth.models import User
 from django.test import TestCase
 from loguru import logger
 
-from .expert_models import Expert
+from .expert_controller import ExpertFactory
 
 
-class ClientTest(TestCase):
+class ExpertTest(TestCase):
     logger.info(" Running test for users.expert Model")
 
-    @classmethod
-    def setUpTestData(cls):
-        cls.user = User.objects.create_user(username="test", password="test")
-        cls.expert = Expert.objects.create(
-            user=cls.user,
-            description="Test Description",
-            available=False,
-            working_hours=["00:00", "00:00", "00:00"],
-            ip_address="0.0.0.0",
-            ip_city=None,
-            country_code="TC",
-            device_type="Test Device",
-            last_password_change=None,
-            phone_number="1234567890",
-            avatar=None,
-            question_price=0,
-            questions_answered=0,
-            call_price=0,
-            calls_scheduled=0,
-            calls_completed=0,
-            category_choices=["Test Category"],
-        )
+    def setUp(self):
+        ExpertFactory.reset_sequence()
+        self.expert = factory.build(dict, FACTORY_CLASS=ExpertFactory)
 
-    def test_user_username(self):
-        self.assertEqual(str(self.user.username), "test")
+    def test_expert_model_instances(self):
+        self.assertIsInstance(self.expert, dict)
+        self.assertIsInstance(self.expert["user"], User)
+        self.assertIsInstance(self.expert["description"], str)
+        self.assertIsInstance(self.expert["available"], bool)
+        self.assertIsInstance(self.expert["ip_address"], str)
+        self.assertIsInstance(self.expert["ip_city"], str)
+        self.assertIsInstance(self.expert["country_code"], str)
+        self.assertIsInstance(self.expert["device_type"], str)
+        self.assertIsInstance(self.expert["last_password_change"], datetime or None)
+        self.assertIsInstance(self.expert["phone_number"], str)
+        self.assertIsInstance(self.expert["avatar"], str)
+        self.assertIsInstance(self.expert["question_price"], int)
+        self.assertIsInstance(self.expert["questions_answered"], int)
+        self.assertIsInstance(self.expert["call_price"], int)
+        self.assertIsInstance(self.expert["calls_scheduled"], int)
+        self.assertIsInstance(self.expert["calls_completed"], int)
+        self.assertIsInstance(self.expert["category_choices"], str)
 
-    def test_client_ip_address(self):
-        self.assertEqual(str(self.user.expert.ip_address), "0.0.0.0")
-
-    def test_client_device_type(self):
-        self.assertEqual(str(self.user.expert.device_type), "Test Device")
-
-    def test_expert_description(self):
-        self.assertEqual(str(self.user.expert.description), "Test Description")
-
-    def test_expert_available(self):
-        self.assertEqual(str(self.user.expert.available), "False")
-
-    def test_expert_call_price(self):
-        self.assertEqual(int(self.user.expert.call_price), 0)
+    def test_expert_ip_address_should_be_valid(self):
+        self.assertTrue(self.expert["ip_address"].count(".") == 3)
+        self.assertTrue(self.expert["ip_address"].count(":") == 0)
