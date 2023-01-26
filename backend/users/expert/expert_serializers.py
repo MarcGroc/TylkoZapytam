@@ -11,5 +11,5 @@ class ExpertSerializer(serializers.ModelSerializer):
             "ip_address",
             "questions_answered",
             "calls_scheduled",
-            "is_verified",
+            "expert_is_verified",
         ]

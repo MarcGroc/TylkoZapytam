@@ -1,4 +1,6 @@
 from django.db import models
+from users.client.client_models import Client
+from users.expert.expert_models import Expert
 
 
 class Call(models.Model):
@@ -12,13 +14,13 @@ class Call(models.Model):
         blank=True,
     )
     call_type = models.CharField(
-        max_length=50,
+        max_length=100,
         choices=[("Incoming", "Incoming"), ("outgoing", "Outgoing")],
         null=True,
         blank=True,
     )
     call_status = models.CharField(
-        max_length=50,
+        max_length=100,
         null=True,
         blank=True,
         choices=[
@@ -27,6 +29,5 @@ class Call(models.Model):
             ("missed", "Missed"),
         ],
     )
-
-    def __str__(self):
-        return f"{self.id} on {self.call_date}"
+    client = models.ForeignKey(Client, on_delete=models.CASCADE, null=True, blank=True)
+    expert = models.ForeignKey(Expert, on_delete=models.CASCADE, null=True, blank=True)

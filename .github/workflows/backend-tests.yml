@@ -51,7 +51,10 @@ jobs:
       - run: poetry install --no-interaction
 
       - name: make migrations
-        run: poetry run python ./backend/manage.py makemigrations && poetry run python ./backend/manage.py migrate
+        run: poetry run python ./backend/manage.py makemigrations app && 
+          poetry run python ./backend/manage.py makemigrations users && 
+          poetry run python ./backend/manage.py migrate
 
       - name: run tests
-        run: poetry run python ./backend/manage.py test app && poetry run python ./backend/manage.py test users
+        run: poetry run python ./backend/manage.py test app && 
+          poetry run python ./backend/manage.py test users

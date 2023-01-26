@@ -2,7 +2,9 @@ from datetime import datetime
 
 import factory
 from django.test import TestCase
+# from django.urls import reverse
 from loguru import logger
+# from rest_framework.test import APIClient, APITestCase
 
 from .client_controller import ClientFactory
 
@@ -29,3 +31,25 @@ class ClientTest(TestCase):
     def test_client_ip_address_should_be_valid(self):
         self.assertTrue(self.client["ip_address"].count(".") == 3)
         self.assertTrue(self.client["ip_address"].count(":") == 0)
+
+
+# class ClientAPITest(APITestCase):
+#     logger.info(" Running test for users.client API")
+#
+#     def setUp(self):
+#         self.client = APIClient()
+#         ClientFactory.reset_sequence()
+#         self.user = factory.build(dict, FACTORY_CLASS=ClientFactory)
+#
+#     def test_client_api_should_return_201(self):
+#         response = self.client.post(reverse("client"), data=self.user)
+#         self.assertEqual(response.status_code, 201)
+# self.assertEqual(response.data["ip_address"], self.user["ip_address"])
+# self.assertEqual(response.data["ip_city"], self.user["ip_city"])
+# self.assertEqual(response.data["country_code"], self.user["country_code"])
+# self.assertEqual(response.data["device_type"], self.user["device_type"])
+# self.assertEqual(response.data["last_password_change"], self.user["last_password_change"])
+# self.assertEqual(response.data["phone_number"], self.user["phone_number"])
+# self.assertEqual(response.data["questions_asked"], self.user["questions_asked"])
+# self.assertEqual(response.data["calls_scheduled"], self.user["calls_scheduled"])
+# self.assertEqual(response.data["calls_completed"], self.user["calls_completed"])

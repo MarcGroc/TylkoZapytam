@@ -1,5 +1,7 @@
 import factory
 from faker import Faker
+from users.client.client_controller import ClientFactory
+from users.expert.expert_controller import ExpertFactory
 
 from .question_models import Question
 
@@ -15,3 +17,5 @@ class QuestionFactory(factory.django.DjangoModelFactory):
     answer = factory.LazyFunction(fake.text)
     question_date = factory.LazyFunction(fake.date_time_this_month)
     answer_date = factory.LazyFunction(fake.date_time_this_month)
+    client = factory.SubFactory(ClientFactory)
+    expert_id = factory.SubFactory(ExpertFactory)

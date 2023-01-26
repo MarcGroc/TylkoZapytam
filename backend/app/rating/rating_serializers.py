@@ -8,4 +8,5 @@ class RatingSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Rating
-        fields = ["id", "rating", "comment", "rating_date", "created_at"]
+        fields = "__all__"
+        ordering = ["rating_date"]

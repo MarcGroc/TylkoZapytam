@@ -8,4 +8,4 @@ class CallSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Call
-        fields = ["call_date", "call_duration", "call_type", "call_status", "created"]
+        fields = "__all__"

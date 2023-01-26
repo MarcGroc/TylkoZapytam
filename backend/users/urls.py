@@ -1,11 +1,12 @@
-from django.urls import path
+from django.urls import include, path
+from rest_framework.routers import DefaultRouter
+from users.client.client_views import ClientViewSet
+from users.expert.expert_views import ExpertViewSet
 
-from .client.client_views import ClientAPIView, ClientDetailView
-from .expert.expert_views import ExpertAPIView
+router = DefaultRouter()
+router.register("client", ClientViewSet, basename="client")
+router.register("expert", ExpertViewSet, basename="expert")
 
 urlpatterns = [
-    path("client/<int:pk>", ClientAPIView.as_view(), name="client"),
-    path("expert/<int:pk>", ExpertAPIView.as_view(), name="experts"),
-    # below are for testing purposes
-    path("detail/<int:pk>", ClientDetailView.as_view(), name="detail"),
+    path("api/", include(router.urls)),
 ]
