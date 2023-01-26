@@ -2,7 +2,7 @@ from datetime import datetime
 
 import factory
 from django.test import TestCase
-from django.urls import reverse
+# from django.urls import reverse
 from loguru import logger
 
 from .rating_controller import RatingFactory
