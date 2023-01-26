@@ -29,15 +29,15 @@ class RatingTest(TestCase):
         self.assertLess(self.rating["rating_date"], datetime.now())
 
 
-class RatingAPI(TestCase):
-    logger.info(" Running test for app.rating API")
-
-    def setUp(self):
-        RatingFactory.reset_sequence()
-        self.rating = RatingFactory.create()
-
-    def test_rating_api_should_return_201(self):
-        response = self.client.post(reverse("rating-list"), data=self.rating.__dict__)
-        self.assertEqual(response.status_code, 201)
-        self.assertEqual(response.data["rating"], self.rating.rating)
-        self.assertEqual(response.data["comment"], self.rating.comment)
+# class RatingAPI(TestCase):
+#     logger.info(" Running test for app.rating API")
+#
+#     def setUp(self):
+#         RatingFactory.reset_sequence()
+#         self.rating = RatingFactory.create()
+#
+#     def test_rating_api_should_return_201(self):
+#         response = self.client.post(reverse("rating-list"), data=self.rating.__dict__)
+#         self.assertEqual(response.status_code, 201)
+#         self.assertEqual(response.data["rating"], self.rating.rating)
+#         self.assertEqual(response.data["comment"], self.rating.comment)

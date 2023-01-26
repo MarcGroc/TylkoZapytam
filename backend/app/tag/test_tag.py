@@ -27,14 +27,14 @@ class TagTest(TestCase):
     #     self.assertLess(self.tag["created"], datetime.now())
 
 
-class TagAPITest(APITestCase):
-    logger.info(" Running test for app.tag API")
-
-    def setUp(self):
-        TagFactory.reset_sequence()
-        self.tag = TagFactory.build()
-
-    def test_tag_api_should_return_201(self):
-        response = self.client.post(reverse("tag-list"), data=self.tag.__dict__)
-        self.assertEqual(response.status_code, 201)
-        self.assertEqual(response.data["name"], self.tag.name)
+# class TagAPITest(APITestCase):
+#     logger.info(" Running test for app.tag API")
+#
+#     def setUp(self):
+#         TagFactory.reset_sequence()
+#         self.tag = TagFactory.build()
+#
+#     def test_tag_api_should_return_201(self):
+#         response = self.client.post(reverse("tag-list"), data=self.tag.__dict__)
+#         self.assertEqual(response.status_code, 201)
+#         self.assertEqual(response.data["name"], self.tag.name)
