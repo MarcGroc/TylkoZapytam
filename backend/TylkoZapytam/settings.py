@@ -17,12 +17,13 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-CORS_ALLOWED_ORIGIN_REGEXES = [
-    r"^http?:\/\/localhost:\d+$",
-    r"^http?:\/\/127\.0\.0\.1:\d+$",
-    os.environ.get("ALLOWED_HOSTS"),
-]
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOWED_ORIGIN_REGEXES = [
+#     r"^http?:\/\/localhost:\d+$",
+#     r"^http?:\/\/127\.0\.0\.1:\d+$",
+#     os.environ.get("ALLOWED_HOSTS"),
+# ]
 # Application definition
 
 INSTALLED_APPS = [
