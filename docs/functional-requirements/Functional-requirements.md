@@ -97,6 +97,7 @@ The application will be available on the web and mobile devices.
 ### 2.2 Product functions
 
 - Clients can ask questions, book calls and rate experts.
+- 
 ### 2.3 Client characteristics
 
 - Clients of the platform are professionals or individuals seeking expert advice or assistance on a short-notice basis.
@@ -240,6 +241,8 @@ The application will be available on the web and mobile devices.
 - Admin can see question notifications.
 - Admin can see question messages.
 - Admin can see question payments.
+- Client can ask a question.
+- Expert can answer a question.
 - Expert can see questions.
 - Client can see questions.
 - Moderator can see questions.
@@ -294,6 +297,15 @@ The application will be available on the web and mobile devices.
 #### 3.1.6 Tag management
 
 #### 3.1.7 Notification management
+
+- Client can see notifications.
+- Expert can see notifications.
+- Admin can see notifications.
+- Client will receive notification when his question is answered.
+- Client will receive notification when his call is changed or canceled.
+- Expert will receive notification when he is booked.
+- Expert will receive notification when he is rated.
+- Expert will receive notification when someone asks a question.
 
 
 #### 3.1.8 Search management
@@ -366,10 +378,34 @@ The application will be available on the web and mobile devices.
 
 #### 3.1.20 Client activity management
 
+### 3.2 Email system
 
-### 3.2 Non-functional requirements
+- Client will receive email when his question is answered.
+- Client will receive email when his call is changed or canceled.
+- Expert will receive email when he is booked.
+- Expert will receive email when he is rated.
+- Expert will receive email when someone asks a question.
+- Client will receive email after registration.
+- Expert will receive email after registration.
+- Client will receive email after password reset.
+- Expert will receive email after password reset.
+- Client will receive email after email change.
+- Expert will receive email after email change.
 
-#### 3.2.1 Performance requirements
+### 3.3 Payment system
+
+- Client can pay for call.
+- Client can pay for question.
+- Expert can receive payment for call.
+- Expert can receive payment for question.
+- Client can pay for subscription.
+- Expert can receive payment for subscription.
+
+### 3.4 Wallet system
+
+### 4 Non-functional requirements
+
+#### 4.1 Performance requirements
 
 - The system should be able to handle 1000 Clients at the same time.
 - The system should be able to handle 1000 experts at the same time.
@@ -392,10 +428,10 @@ The application will be available on the web and mobile devices.
 - The system should be able to handle 1000 Client profiles at the same time.
 
 
-#### 3.2.2 Security requirements
+#### 5. Security requirements
 
 
-#### 3.2.3 Software quality attributes
+#### 6. Software quality attributes
 
 - The system should be easy to use.
 - The system should be easy to learn.
@@ -417,9 +453,9 @@ The application will be available on the web and mobile devices.
 - The system should be easy to protect.
 - The system should be easy to optimize.
 
-#### 3.2.4 Business rules
+#### 7. Business rules
 
-#### 3.2.5 Other requirements
+#### 8. Other requirements
 
 
 

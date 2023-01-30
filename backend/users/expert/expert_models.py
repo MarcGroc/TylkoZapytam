@@ -32,3 +32,6 @@ class Expert(models.Model):
 
     class Meta:
         ordering = ["questions_answered", "calls_scheduled"]
+
+    def __str__(self):
+        return self.expert.username

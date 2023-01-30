@@ -1,6 +1,7 @@
 from random import randint
 
 import factory
+
 # from app.category.category_controller import CategoryFactory
 # from django.contrib.auth.models import User
 from faker import Faker

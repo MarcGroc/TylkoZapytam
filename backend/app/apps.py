@@ -13,6 +13,6 @@ class ApConfig(AppConfig):
         logger.info("Ensure database connection")
         try:
             connection.ensure_connection()
-            logger.info("Database connection ensured")
+            logger.info("Database connection established")
         except OperationalError:
             logger.error("Database connection failed")

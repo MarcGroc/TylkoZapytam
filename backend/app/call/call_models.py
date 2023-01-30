@@ -31,3 +31,6 @@ class Call(models.Model):
     )
     client = models.ForeignKey(Client, on_delete=models.CASCADE, null=True, blank=True)
     expert = models.ForeignKey(Expert, on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.client} to {self.expert} with {self.call_date}"

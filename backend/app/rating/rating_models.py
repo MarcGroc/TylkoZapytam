@@ -15,3 +15,6 @@ class Rating(models.Model):
     rating_date = models.DateTimeField(auto_now_add=True)
     client = models.ForeignKey(Client, on_delete=models.CASCADE, null=True, blank=True)
     expert = models.ForeignKey(Expert, on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.client} to {self.expert} with {self.rating}"

@@ -1,10 +1,12 @@
 import factory
 from django.test import TestCase
+
 # from django.urls import reverse
 from loguru import logger
-# from rest_framework.test import APITestCase
 
 from .tag_controller import TagFactory
+
+# from rest_framework.test import APITestCase
 
 
 class TagTest(TestCase):
@@ -23,9 +25,13 @@ class TagTest(TestCase):
         self.assertGreaterEqual(len(self.tag["name"]), 3)
         self.assertLessEqual(len(self.tag["name"]), 30)
 
+    # TODO: change datatime to django timezone
+
     # def test_tag_created_date_should_be_less_than_now(self):
     #     self.assertLess(self.tag["created"], datetime.now())
 
+
+# TODO: Tests for API calls with APITestCase
 
 # class TagAPITest(APITestCase):
 #     logger.info(" Running test for app.tag API")
