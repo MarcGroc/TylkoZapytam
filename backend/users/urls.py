@@ -7,6 +7,8 @@ router = DefaultRouter()
 router.register("client", ClientViewSet, basename="client")
 router.register("expert", ExpertViewSet, basename="expert")
 
+
 urlpatterns = [
     path("api/", include(router.urls)),
+    path("accounts/", include("allauth.urls")),
 ]

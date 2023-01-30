@@ -17,4 +17,4 @@ class Question(models.Model):
     )
 
     def __str__(self):
-        return self.question_text
+        return f"{self.client} to {self.expert_id} with {self.question_text}"
