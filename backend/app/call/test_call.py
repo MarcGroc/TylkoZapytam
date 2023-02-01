@@ -40,3 +40,7 @@ class CallTest(TestCase):
 
 
 # TODO: Tests for API calls with APITestCase
+
+
+class CallAPITest(TestCase):
+    pass

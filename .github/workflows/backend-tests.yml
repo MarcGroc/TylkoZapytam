@@ -18,6 +18,13 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
+      - name: Check for non-functional file changes
+        if: |
+          echo "$(cat ${GITHUB_EVENT_PATH})" | grep -Eq "\"(\w+\.md|\w+\.jpg|\w+\.png)\""
+        run: |
+          echo "Only non-functional files were changed, skipping the workflow..."
+          exit 78
+
       - uses: actions/checkout@v3
 
 
