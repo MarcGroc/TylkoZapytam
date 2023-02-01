@@ -1,7 +1,6 @@
 import factory
 from django.test import TestCase
 from django.urls import reverse
-from loguru import logger
 from rest_framework.test import APITestCase
 
 from .tag_controller import TagFactory
@@ -9,8 +8,6 @@ from .tag_models import Tag
 
 
 class TagTest(TestCase):
-    logger.info(" Running test for app.tag Model")
-
     def setUp(self):
         TagFactory.reset_sequence()
         self.tag = factory.build(dict, FACTORY_CLASS=TagFactory)
