@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 
 from dotenv import find_dotenv, load_dotenv
-from loguru import logger
+# from loguru import logger
 
 load_dotenv(find_dotenv(".env.development"))
 
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "rest_framework",
     "drf_spectacular",
-    "django_loguru",
+    # "django_loguru",
     "corsheaders",
     "allauth",
     "allauth.account",
@@ -58,7 +58,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "django_loguru.middleware.DjangoLoguruMiddleware",
+    # "django_loguru.middleware.DjangoLoguruMiddleware",
 ]
 
 DJANGO_LOGGING_MIDDLEWARE = {
