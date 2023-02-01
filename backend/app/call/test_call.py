@@ -4,7 +4,6 @@ import factory
 from django.test import TestCase
 
 # from django.urls import reverse
-from loguru import logger
 
 from .call_controller import CallFactory
 
@@ -12,7 +11,6 @@ from .call_controller import CallFactory
 
 
 class CallTest(TestCase):
-    logger.info(" Running test for app.call Model")
 
     def setUp(self):
         CallFactory.reset_sequence()

@@ -2,7 +2,6 @@ import factory
 from django.test import TestCase
 
 # from django.urls import reverse
-from loguru import logger
 
 from .category_controller import CategoryFactory
 
@@ -10,7 +9,6 @@ from .category_controller import CategoryFactory
 
 
 class CategoryTest(TestCase):
-    logger.info(" Running test for app.category Model")
 
     def setUp(self):
         CategoryFactory.reset_sequence()

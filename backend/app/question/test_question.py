@@ -4,7 +4,6 @@ import factory
 from django.test import TestCase
 
 # from django.urls import reverse
-from loguru import logger
 
 from .question_controller import QuestionFactory
 
@@ -12,7 +11,6 @@ from .question_controller import QuestionFactory
 
 
 class QuestionTest(TestCase):
-    logger.info(" Running test for app.question Model")
 
     def setUp(self):
         QuestionFactory.reset_sequence()

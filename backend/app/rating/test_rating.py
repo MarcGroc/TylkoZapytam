@@ -4,13 +4,11 @@ import factory
 from django.test import TestCase
 
 # from django.urls import reverse
-from loguru import logger
 
 from .rating_controller import RatingFactory
 
 
 class RatingTest(TestCase):
-    logger.info(" Running test for app.rating Model")
 
     def setUp(self):
         RatingFactory.reset_sequence()

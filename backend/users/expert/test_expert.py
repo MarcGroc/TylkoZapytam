@@ -4,7 +4,6 @@ import factory
 from django.test import TestCase
 
 # from django.urls import reverse
-from loguru import logger
 
 from .expert_controller import ExpertFactory
 
@@ -13,7 +12,6 @@ from .expert_controller import ExpertFactory
 
 
 class ExpertTest(TestCase):
-    logger.info(" Running test for users.expert Model")
 
     def setUp(self):
         ExpertFactory.reset_sequence()
@@ -41,7 +39,6 @@ class ExpertTest(TestCase):
 
 
 # class ExpertAPITest(APITestCase):
-#     logger.info(" Running test for users.expert API")
 #
 #     def setUp(self):
 #         UserFactory.reset_sequence()

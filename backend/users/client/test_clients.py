@@ -4,7 +4,6 @@ import factory
 from django.test import TestCase
 
 # from django.urls import reverse
-from loguru import logger
 
 from .client_controller import ClientFactory
 
@@ -12,7 +11,6 @@ from .client_controller import ClientFactory
 
 
 class ClientTest(TestCase):
-    logger.info(" Running test for users.client Model")
 
     def setUp(self):
         ClientFactory.reset_sequence()
@@ -36,7 +34,6 @@ class ClientTest(TestCase):
 
 
 # class ClientAPITest(APITestCase):
-#     logger.info(" Running test for users.client API")
 #
 #     def setUp(self):
 #         UserFactory.reset_sequence()
