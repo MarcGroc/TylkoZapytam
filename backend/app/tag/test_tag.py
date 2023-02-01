@@ -29,7 +29,6 @@ class TagTest(TestCase):
 
 
 class TagAPITest(APITestCase):
-    logger.info(" Running test for app.tag API")
 
     def setUp(self):
         TagFactory.reset_sequence()
