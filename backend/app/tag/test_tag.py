@@ -1,4 +1,3 @@
-
 import factory
 from django.test import TestCase
 from django.urls import reverse
@@ -25,11 +24,7 @@ class TagTest(TestCase):
         self.assertLessEqual(len(self.tag["name"]), 30)
 
 
-# TODO: Tests for API calls with APITestCase
-
-
 class TagAPITest(APITestCase):
-
     def setUp(self):
         TagFactory.reset_sequence()
         self.tag = TagFactory.build()
