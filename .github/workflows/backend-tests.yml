@@ -63,5 +63,7 @@ jobs:
           poetry run python ./backend/manage.py migrate
 
       - name: run tests
+        env:
+          SECRET_KEY: test-secret-key
         run: poetry run python ./backend/manage.py test app && 
           poetry run python ./backend/manage.py test users
