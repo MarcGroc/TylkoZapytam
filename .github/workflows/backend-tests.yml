@@ -10,6 +10,7 @@ jobs:
       postgres:
         image: postgres
         env:
+          # TODO change env to github secrets
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: pytania
@@ -67,3 +68,4 @@ jobs:
           SECRET_KEY: test-secret-key
         run: poetry run python ./backend/manage.py test app && 
           poetry run python ./backend/manage.py test users
+

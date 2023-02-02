@@ -7,7 +7,7 @@ from .expert_serializers import ExpertSerializer
 class ExpertViewSet(viewsets.ModelViewSet):
     """"""
 
-    queryset = Expert.objects.all()
+    queryset = Expert.objects.select_related()
     serializer_class = ExpertSerializer
 
     # def get_queryset(self):

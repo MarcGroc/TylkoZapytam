@@ -3,6 +3,7 @@ import sys
 from pathlib import Path
 
 from dotenv import find_dotenv, load_dotenv
+
 # from loguru import logger
 
 load_dotenv(find_dotenv(".env.development"))
@@ -141,7 +142,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = "pl-pl"
+LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "CET"
 
@@ -173,6 +174,7 @@ REST_FRAMEWORK = {
         # "rest_framework.authentication.SessionAuthentication",
     ],
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    # 'TEST_REQUEST_DEFAULT_FORMAT': 'json'
 }
 
 SPECTACULAR_SETTINGS = {

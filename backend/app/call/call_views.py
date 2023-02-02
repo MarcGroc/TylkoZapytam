@@ -5,5 +5,5 @@ from .call_serializers import CallSerializer
 
 
 class CallViewSet(viewsets.ModelViewSet):
-    queryset = Call.objects.all()
+    queryset = Call.objects.select_related()
     serializer_class = CallSerializer

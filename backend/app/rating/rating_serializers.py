@@ -10,3 +10,5 @@ class RatingSerializer(serializers.ModelSerializer):
         model = Rating
         fields = "__all__"
         ordering = ["rating_date"]
+
+        extra_kwargs = {"client": {"required": False}, "expert": {"required": False}}

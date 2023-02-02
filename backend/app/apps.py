@@ -1,5 +1,6 @@
 from django.apps import AppConfig
 from django.db import OperationalError, connection
+
 # from loguru import logger
 
 
