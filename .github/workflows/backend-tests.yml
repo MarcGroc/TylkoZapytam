@@ -10,6 +10,7 @@ jobs:
       postgres:
         image: postgres
         env:
+          # TODO change env to github secrets
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: pytania
@@ -18,6 +19,13 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
+#      - name: Check for non-functional file changes
+#        if: |
+#          echo "$(cat ${GITHUB_EVENT_PATH})" | grep -Eq "\"(\w+\.md|\w+\.jpg|\w+\.png)\""
+#        run: |
+#          echo "Only non-functional files were changed, skipping the workflow..."
+#          exit 78
+
       - uses: actions/checkout@v3
 
 
@@ -29,11 +37,11 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.local
-          key: poetry-1.1.12-0
+          key: poetry-1.2.1
 
       - uses: snok/install-poetry@v1
         with:
-          version: 1.1.12
+          version: 1.2.1
           virtualenvs-create: true
           virtualenvs-in-project: true
 
@@ -41,20 +49,27 @@ jobs:
         id: cache-deps
         uses: actions/cache@v3
         with:
-          path: .venv
+          path: ./backend/.venv
           key: pydeps-${{ hashFiles('**/poetry.lock') }}
 
       - run: poetry install --no-interaction --no-root
+        working-directory: ./backend
         if: steps.cache-deps.outputs.cache-hit != 'true'
 
 
       - run: poetry install --no-interaction
+        working-directory: ./backend
 
       - name: make migrations
-        run: poetry run python ./backend/manage.py makemigrations app && 
-          poetry run python ./backend/manage.py makemigrations users && 
-          poetry run python ./backend/manage.py migrate
+        working-directory: ./backend
+        run: poetry run python manage.py makemigrations app && 
+          poetry run python manage.py makemigrations users && 
+          poetry run python manage.py migrate
 
       - name: run tests
-        run: poetry run python ./backend/manage.py test app && 
-          poetry run python ./backend/manage.py test users
+        working-directory: ./backend
+        env:
+          SECRET_KEY: test-secret-key
+        run: poetry run python manage.py test app && 
+          poetry run python manage.py test users
+

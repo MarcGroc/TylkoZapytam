@@ -5,5 +5,5 @@ from .question_serializers import QuestionSerializer
 
 
 class QuestionViewSet(viewsets.ModelViewSet):
-    queryset = Question.objects.all()
+    queryset = Question.objects.select_related()
     serializer_class = QuestionSerializer

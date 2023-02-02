@@ -12,7 +12,7 @@ www.domain.net
 4. the API generates a token. It can use any method for this, e.g. https://stackoverflow.com/a/8856177/704894
 5. the API saves the token and the associated user in the database. The session expiry time is also set.
 6. the API sets a cookie with this token. Necessarily Domain=.domain.net, HttpOnly and SameSite=Lax. And Secure if you have https (you must have on production)
-7. the API sends a response along with this cookie. From this point on, every request from www.domena.net to api.domain.net will contain this cookie.
+7. the API sends a response along with this cookie. From this point on, every request from www.domain.net to api.domain.net will contain this cookie.
 
 # Authentication
 1. the user makes any request, the cookie is automatically included.

@@ -12,9 +12,9 @@ class RatingFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Rating
 
-    id = factory.Sequence(lambda n: n)
+    # id = 1
     rating = randint(1, 5)
-    comment = factory.Faker("text", max_nb_chars=300)
+    comment = "test"
     rating_date = datetime.now()
     client = factory.SubFactory(ClientFactory)
     expert = factory.SubFactory(ExpertFactory)

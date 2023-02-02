@@ -13,10 +13,10 @@ class UserFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = User
 
-    id = factory.Sequence(lambda n: n)
-    username = factory.LazyFunction(fake.user_name)
+    id = factory.Sequence(lambda n: int(n))
+    username = factory.Sequence(lambda n: n)
+    password = factory.PostGenerationMethodCall("set_password", "zaq1@WSX")
     email = factory.LazyFunction(fake.email)
-    password = factory.LazyFunction(fake.password)
 
 
 class ClientFactory(factory.django.DjangoModelFactory):

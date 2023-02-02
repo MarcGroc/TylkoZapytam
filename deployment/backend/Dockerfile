@@ -3,7 +3,7 @@ FROM python:3.9.10
 ENV PYTHONUNBUFFERED 1
 
 WORKDIR /backend
-COPY poetry.lock pyproject.toml /backend/
+COPY ../../backend/poetry.lock pyproject.toml /backend/
 
 RUN pip install poetry
 

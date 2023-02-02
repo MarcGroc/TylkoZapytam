@@ -9,12 +9,13 @@ class Rating(models.Model):
 
     id = models.AutoField(primary_key=True)
     rating = models.IntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(5)], null=True, blank=True
+        validators=[MinValueValidator(1), MaxValueValidator(5)], default=None
     )
-    comment = models.TextField(max_length=300, null=True, blank=True)
+    comment = models.TextField(max_length=300, default=None)
     rating_date = models.DateTimeField(auto_now_add=True)
-    client = models.ForeignKey(Client, on_delete=models.CASCADE, null=True, blank=True)
-    expert = models.ForeignKey(Expert, on_delete=models.CASCADE, null=True, blank=True)
+    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    expert = models.ForeignKey(Expert, on_delete=models.CASCADE)
 
+    # TODO: add quetion id to prevent rating for the same question
     def __str__(self):
         return f"{self.client} to {self.expert} with {self.rating}"

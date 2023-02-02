@@ -4,6 +4,8 @@ from pathlib import Path
 
 from dotenv import find_dotenv, load_dotenv
 
+# from loguru import logger
+
 load_dotenv(find_dotenv(".env.development"))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -17,11 +19,12 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGIN = os.environ.get("ALLOWED_HOSTS")
+# CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_CREDENTIALS = True
 # CORS_ALLOWED_ORIGIN_REGEXES = [
-#     r"^http?:\/\/localhost:\d+$",
-#     r"^http?:\/\/127\.0\.0\.1:\d+$",
+#     # r"^http?:\/\/localhost:\d+$",
+#     # r"^http?:\/\/127\.0\.0\.1:\d+$",
 #     os.environ.get("ALLOWED_HOSTS"),
 # ]
 # Application definition
@@ -38,7 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "rest_framework",
     "drf_spectacular",
-    "django_loguru",
+    # "django_loguru",
     "corsheaders",
     "allauth",
     "allauth.account",
@@ -56,7 +59,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "django_loguru.middleware.DjangoLoguruMiddleware",
+    # "django_loguru.middleware.DjangoLoguruMiddleware",
 ]
 
 DJANGO_LOGGING_MIDDLEWARE = {
@@ -139,7 +142,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = "pl-pl"
+LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "CET"
 
@@ -151,7 +154,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "/static/"
-
+# STATIC_ROOT = "/var/www/tylkozapytam.pl/static"
+# STATICFILES_DIRS = [BASE_DIR / "static"]
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # Default primary key field type
@@ -160,15 +164,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 REST_FRAMEWORK = {
+    # TODO change Permission after testing
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.AllowAny",
         # "rest_framework.permissions.IsAuthenticated",
     ],
     "DEFAULT_AUTHENTICATION_CLASSES": [
         # "rest_framework.authentication.BasicAuthentication",
-        "rest_framework.authentication.SessionAuthentication",
+        # "rest_framework.authentication.SessionAuthentication",
     ],
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    # 'TEST_REQUEST_DEFAULT_FORMAT': 'json'
 }
 
 SPECTACULAR_SETTINGS = {
@@ -183,3 +189,8 @@ SPECTACULAR_SETTINGS = {
         "displayRequestDuration": True,
     },
 }
+SECURE_HSTS_SECONDS = 2_592_000
+SECURE_HSTS_PRELOAD = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"

@@ -5,5 +5,5 @@ from .tag_serializers import TagSerializer
 
 
 class TagViewSet(viewsets.ModelViewSet):
-    queryset = Tag.objects.all()
+    queryset = Tag.objects.select_related()
     serializer_class = TagSerializer

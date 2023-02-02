@@ -21,5 +21,5 @@ class Client(models.Model):
     class Meta:
         ordering = ["questions_asked", "calls_scheduled"]
 
-    def __str__(self):
-        return self.client.username
+    # def __str__(self):
+    #     return self.client.username

@@ -1,6 +1,7 @@
 from django.apps import AppConfig
 from django.db import OperationalError, connection
-from loguru import logger
+
+# from loguru import logger
 
 
 class ApConfig(AppConfig):
@@ -10,9 +11,10 @@ class ApConfig(AppConfig):
     def ready(self):
         import app.signals
 
-        logger.info("Ensure database connection")
+        # logger.info("Ensure database connection")
         try:
             connection.ensure_connection()
-            logger.info("Database connection established")
+            # logger.info("Database connection established")
         except OperationalError:
-            logger.error("Database connection failed")
+            raise OperationalError("Database connection failed")
+            # logger.error("Database connection failed")
