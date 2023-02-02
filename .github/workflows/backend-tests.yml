@@ -61,13 +61,13 @@ jobs:
         working-directory: ./backend
 
       - name: make migrations
-        run: poetry run python ./backend/manage.py makemigrations app && 
-          poetry run python ./backend/manage.py makemigrations users && 
-          poetry run python ./backend/manage.py migrate
+        run: poetry run python manage.py makemigrations app && 
+          poetry run python manage.py makemigrations users && 
+          poetry run python manage.py migrate
 
       - name: run tests
         env:
           SECRET_KEY: test-secret-key
-        run: poetry run python ./backend/manage.py test app && 
-          poetry run python ./backend/manage.py test users
+        run: poetry run python manage.py test app && 
+          poetry run python manage.py test users
 
