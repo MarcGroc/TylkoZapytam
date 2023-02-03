@@ -20,14 +20,14 @@ services:
   backend:
     container_name: backend
     build:
-      context: .
-      dockerfile: deployment/backend/Dockerfile
+      context: ../backend/app
+      dockerfile: backend/Dockerfile
     ports:
       - "8000:8000"
     volumes:
         - ./backend/app:/app
     env_file:
-        - .env.development
+        - ../.env.development
     networks:
       - tylkozapytam
     depends_on:

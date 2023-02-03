@@ -4,7 +4,7 @@ import factory
 from django.contrib.auth.models import User
 from faker import Faker
 
-from .client_models import Client
+from users.client.client_models import Client
 
 fake = Faker()
 
@@ -33,3 +33,5 @@ class ClientFactory(factory.django.DjangoModelFactory):
     questions_asked = randint(0, 100)
     calls_scheduled = randint(0, 100)
     calls_completed = randint(0, 100)
+
+

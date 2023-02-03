@@ -1,7 +1,7 @@
 import factory
 from app.tag.tag_controller import TagFactory
 
-from .category_models import Category
+from app.category.category_models import Category
 
 
 class CategoryFactory(factory.django.DjangoModelFactory):

@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from .client.client_models import Client
-from .expert.expert_models import Expert
+from users.client.client_models import Client
+from users.expert.expert_models import Expert
 
 
 @admin.register(Client)
