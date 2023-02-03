@@ -1,6 +1,5 @@
+from app.call.call_models import Call
 from rest_framework import serializers
-
-from .call_models import Call
 
 
 class CallSerializer(serializers.ModelSerializer):

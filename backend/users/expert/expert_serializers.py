@@ -1,6 +1,5 @@
 from rest_framework import serializers
-
-from .expert_models import Expert
+from users.expert.expert_models import Expert
 
 
 class ExpertSerializer(serializers.ModelSerializer):

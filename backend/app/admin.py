@@ -1,10 +1,12 @@
+from app.call.call_models import Call
+from app.category.category_models import Category
+from app.question.question_models import Question
+from app.rating.rating_models import Rating
+from app.tag.tag_models import Tag
 from django.contrib import admin
+from django.contrib.auth.decorators import login_required
 
-from .call.call_models import Call
-from .category.category_models import Category
-from .question.question_models import Question
-from .rating.rating_models import Rating
-from .tag.tag_models import Tag
+admin.site.login = login_required(admin.site.login)
 
 
 @admin.register(Question)

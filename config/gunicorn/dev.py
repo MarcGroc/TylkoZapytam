@@ -2,7 +2,7 @@
 """Gunicorn *development* config file"""
 
 # Django WSGI application path in pattern MODULE_NAME:VARIABLE_NAME
-wsgi_app = "Tylkozapytam.wsgi:application"
+wsgi_app = "tylko_zapytam.wsgi:application"
 # The granularity of Error log outputs
 loglevel = "debug"
 # The number of worker processes for handling requests

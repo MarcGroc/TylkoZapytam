@@ -1,6 +1,5 @@
 import factory
-
-from .tag_models import Tag
+from app.tag.tag_models import Tag
 
 
 class TagFactory(factory.django.DjangoModelFactory):

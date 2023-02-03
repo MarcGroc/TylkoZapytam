@@ -1,6 +1,5 @@
 from rest_framework import serializers
-
-from .client_models import Client
+from users.client.client_models import Client
 
 
 class ClientSerializer(serializers.ModelSerializer):

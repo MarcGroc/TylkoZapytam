@@ -42,16 +42,16 @@ migrations:
 
 checkmigrations:
 	python backend/manage.py makemigrations --check --no-input --dry-run
+
 # Docker commands
 build-backend:
-	docker build . -f backend/Dockerfile -t backend
+	docker build . -f deployment/backend/Dockerfile -t backend
 
 build-fronted:
-	docker build . -f frontend/Dockerfile -t frontend
+	docker build . -f deployment/frontend/Dockerfile -t frontend
 
 build-task-runner:
-	docker build . -f task_runner/Dockerfile -t task-runner
-
+	docker build . -f deployment/task_runner/Dockerfile -t task-runner
 
 docker-compose:
 	docker-compose -f docker-compose.development.yml rm -s -v -f

@@ -1,7 +1,6 @@
+from app.call.call_models import Call
+from app.call.call_serializers import CallSerializer
 from rest_framework import viewsets
-
-from .call_models import Call
-from .call_serializers import CallSerializer
 
 
 class CallViewSet(viewsets.ModelViewSet):
