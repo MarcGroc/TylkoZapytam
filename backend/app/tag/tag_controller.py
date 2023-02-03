@@ -1,5 +1,4 @@
 import factory
-
 from app.tag.tag_models import Tag
 
 

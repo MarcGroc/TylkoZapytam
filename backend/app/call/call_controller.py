@@ -2,11 +2,10 @@ from datetime import datetime
 from random import randrange
 
 import factory
+from app.call.call_models import Call
 from faker import Faker
 from users.client.client_controller import ClientFactory
 from users.expert.expert_controller import ExpertFactory
-
-from app.call.call_models import Call
 
 fake = Faker()
 

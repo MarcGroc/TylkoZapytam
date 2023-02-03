@@ -2,10 +2,9 @@ from datetime import datetime
 from random import randint
 
 import factory
+from app.rating.rating_models import Rating
 from users.client.client_controller import ClientFactory
 from users.expert.expert_controller import ExpertFactory
-
-from app.rating.rating_models import Rating
 
 
 class RatingFactory(factory.django.DjangoModelFactory):

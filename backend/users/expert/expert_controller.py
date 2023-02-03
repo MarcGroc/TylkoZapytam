@@ -1,10 +1,8 @@
 from random import randint
 
 import factory
-
 from faker import Faker
 from users.client.client_controller import UserFactory
-
 from users.expert.expert_models import Expert
 
 fake = Faker()

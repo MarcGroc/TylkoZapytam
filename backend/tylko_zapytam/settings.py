@@ -3,7 +3,6 @@ from pathlib import Path
 
 from dotenv import find_dotenv, load_dotenv
 
-
 load_dotenv(find_dotenv(".env.development"))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
